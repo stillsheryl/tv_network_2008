@@ -12,4 +12,10 @@ class NetworkTest < Minitest::Test
     assert_instance_of  Network, nbc
   end
 
+  def test_it_has_no_shows_by_default
+    nbc = Network.new("NBC")
+
+    assert_equal [], nbc.shows
+  end
+
 end
