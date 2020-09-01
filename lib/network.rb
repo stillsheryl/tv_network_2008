@@ -19,17 +19,32 @@ class Network
   end
 
   def actors_by_show
-    shows_hash = Hash.new
+    actors_by_show_hash = Hash.new
     @shows.each do |show|
       show.characters.each do |character|
-        if shows_hash[show].nil?
-          shows_hash[show] = [character.actor]
+        if actors_by_show_hash[show].nil?
+          actors_by_show_hash[show] = [character.actor]
         else
-          shows_hash[show] << character.actor
+          actors_by_show_hash[show] << character.actor
         end
       end
     end
-    shows_hash
+    actors_by_show_hash
+  end
+
+  def shows_by_actor
+    shows_by_actor_hash = Hash.new
+    @shows.each do |show|
+      show.characters.each do |character|
+        # require "pry"; binding.pry
+        if shows_by_actor_hash[character.actor].nil?
+          shows_by_actor_hash[character.actor] = [show]
+        else
+          shows_by_actor_hash[character.actor] << show
+        end
+      end
+    end
+    shows_by_actor_hash
   end
 
 end

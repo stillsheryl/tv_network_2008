@@ -67,7 +67,7 @@ class NetworkTest < Minitest::Test
     assert_equal actual, nbc.actors_by_show
   end
 
-  def method_name
+  def test_can_view_shows_by_actor
     nbc = Network.new("NBC")
     michael_knight = Character.new({name: "Michael Knight", actor: "David Hasselhoff", salary: 1_600_000})
     kitt = Character.new({name: "KITT", actor: "William Daniels", salary: 1_000_000})
