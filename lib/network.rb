@@ -36,7 +36,6 @@ class Network
     shows_by_actor_hash = Hash.new
     @shows.each do |show|
       show.characters.each do |character|
-        # require "pry"; binding.pry
         if shows_by_actor_hash[character.actor].nil?
           shows_by_actor_hash[character.actor] = [show]
         else
@@ -45,6 +44,16 @@ class Network
       end
     end
     shows_by_actor_hash
+  end
+
+  def prolific_actors
+    @shows.each do |show|
+      show.characters.find_all do |character|
+        # require "pry"; binding.pry
+        shows_by_actor[character.actor].count >= 2
+        character.actor
+      end
+    end
   end
 
 end
